@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-02-10T01:20:40-08:00</updated><id>/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>Hey there, Thank you for stopping by. This is a small blog to document my AWS Cloud Learnings and Some Tricks. Please reach out to me via my email, in case of any issues or concerns. I am around.</subtitle><entry><title type="html">Virtul Private Cloud</title><link href="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtul Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;p&gt;Hello There&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-10T01:26:01-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>Hey there, Thank you for stopping by. This is a small blog to document my AWS Cloud Learnings and Some Tricks. Please reach out to me via my email, in case of any issues or concerns. I am around.</subtitle><entry><title type="html">Virtul Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtul Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">Hello There
 
-&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
+## Networking - VPC 
 
-&lt;h3 id=&quot;section-introduction&quot;&gt;Section Introduction&lt;/h3&gt;
+### Section Introduction
 
-&lt;p&gt;We need to know in and out how to create, operate and manage the VPC for network guidelines.&lt;/p&gt;
+We need to know in and out how to create, operate and manage the VPC for network guidelines.
 
-&lt;p&gt;We will focus on Amazon VPC and AWS Direcr Connect in this section.&lt;/p&gt;
+We will focus on Amazon VPC and AWS Direcr Connect in this section.
 
-&lt;h3 id=&quot;cidr-private-vs-public-ip&quot;&gt;CIDR, Private vs Public IP&lt;/h3&gt;
+### CIDR, Private vs Public IP
 
-&lt;p&gt;CIDR - Classless Inter-Domain Routing&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Hello There</summary></entry></feed>
+CIDR - Classless Inter-Domain Routing</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Hello There</summary></entry></feed>
