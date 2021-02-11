@@ -21,7 +21,7 @@
 title: Kaushal Kumar
 email: sirkaushalkumar@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Hey there, Thank you for stopping by. This is a small blog to document my AWS Cloud Learnings and Some Tricks. Please reach out to me via my email, in case of any issues or concerns. I am around.
+  A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: sirekaushal
@@ -29,6 +29,8 @@ github_username:  sirkaushalkumar
 facebook_username: sirekaushal
 linkedin_username: sirekaushal
 instagram_username: sirekaushal
+skin: dark
+show_excerpts: true
 
 # Build settings
 theme: minima
@@ -54,3 +56,6 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+minima:
+  skin: dark

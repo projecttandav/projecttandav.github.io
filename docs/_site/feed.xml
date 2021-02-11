@@ -1,13 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-02-10T01:33:42-08:00</updated><id>/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>Hey there, Thank you for stopping by. This is a small blog to document my AWS Cloud Learnings and Some Tricks. Please reach out to me via my email, in case of any issues or concerns. I am around.</subtitle><entry><title type="html">Virtul Private Cloud</title><link href="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtul Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">Hello There
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-02-11T05:01:41-08:00</updated><id>/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We arw currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;p&gt;Hello There&lt;/p&gt;
 
-## Networking - VPC 
+&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
+&lt;hr /&gt;
 
-### Section Introduction
+&lt;h3 id=&quot;section-introduction&quot;&gt;Section Introduction&lt;/h3&gt;
 
-We need to know in and out how to create, operate and manage the VPC for network guidelines.
+&lt;p&gt;We need to know in and out how to create, operate and manage the VPC for network guidelines.&lt;/p&gt;
 
-We will focus on Amazon VPC and AWS Direcr Connect in this section.
+&lt;p&gt;We will focus on Amazon VPC and AWS Direcr Connect in this section.&lt;/p&gt;
 
-### CIDR, Private vs Public IP
+&lt;h3 id=&quot;cidr-private-vs-public-ip&quot;&gt;CIDR, Private vs Public IP&lt;/h3&gt;
 
-CIDR - Classless Inter-Domain Routing</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Hello There</summary></entry></feed>
+&lt;ul&gt;
+  &lt;li&gt;CIDR - Classless Inter-Domain Routing &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;CIDR are sued for Security Groups rules, or AWS networking in general&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;They help to define an IP Range.
+    &lt;ul&gt;
+      &lt;li&gt;We’ve seen WW.XX.YY.ZZ/32 == One IP &lt;br /&gt;&lt;/li&gt;
+      &lt;li&gt;We’ve seen 0.0.0.0/0 == all IPs &lt;br /&gt;&lt;/li&gt;
+      &lt;li&gt;But we can define e.g., 192.168.0.0/26: 192.168.0.0 - 192.168.0.63 (64 IP)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Understanding CIDR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A CIDR has two components
+    &lt;ul&gt;
+      &lt;li&gt;the base IP (XX.XX.XX.XX)&lt;/li&gt;
+      &lt;li&gt;The Subnet Mask (/26)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The base IP represents an IP contained in the range&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The subnet mask defines how many bits can change in the IP&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The subnet mask can two two forms
+    &lt;ul&gt;
+      &lt;li&gt;255.255.255.0 &amp;lt;- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;less common&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;/24 &amp;lt;- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;more common&lt;/code&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Subnet masks basically allow part of the underlying IP to get additional next values from the base IP.
+    &lt;ul&gt;
+      &lt;li&gt;/32 allows for 1 IP = 2^0&lt;/li&gt;
+      &lt;li&gt;/24 allows for 256 IPs = 2^8&lt;/li&gt;
+      &lt;li&gt;/16 allows for 65,536 IPs = 2^16&lt;/li&gt;
+      &lt;li&gt;/0 allows for all IPs = 2^32
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Quick memo
+    &lt;ul&gt;
+      &lt;li&gt;/32 - no IP number can change&lt;/li&gt;
+      &lt;li&gt;/24 - last IP number can change&lt;/li&gt;
+      &lt;li&gt;/16 - last IP two numbers can change&lt;/li&gt;
+      &lt;li&gt;/8 - last IP three numbers can chnage&lt;/li&gt;
+      &lt;li&gt;/0 - all IP numbers can change
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Little Exercise
+    &lt;ul&gt;
+      &lt;li&gt;192.168.0.0/24 = …?
+        &lt;ul&gt;
+          &lt;li&gt;192.168.0.0 - 192.168.0.255 (256 IPs)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;192.168.0.0/16 = …?
+        &lt;ul&gt;
+          &lt;li&gt;192.168.0.0 - 192.168.0.255 (65,536 IPs)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;194.56.78.123/32 = …?
+        &lt;ul&gt;
+          &lt;li&gt;Just 194.56.78.123&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;0.0.0.0/0 = …?
+        &lt;ul&gt;
+          &lt;li&gt;All IPs&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;When in doubt - use this webiste: &lt;a href=&quot;https://www.ipaddressguide.com/cidr&quot;&gt;https://www.ipaddressguide.com/cidr&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Private vs Public IP (IPv4) - Allowed ranges
+    &lt;ul&gt;
+      &lt;li&gt;The Internet Assigned Numbers Authority (IANA) established certain blocks of IPv4 addresses for the use of private (LAN) and public (Internet) addresses&lt;/li&gt;
+      &lt;li&gt;Private IP can only allow certain values
+        &lt;ul&gt;
+          &lt;li&gt;10.0.0.0 - 10.255.255.255 (10.0.0.0/8) &amp;lt;= in big networks&lt;/li&gt;
+          &lt;li&gt;172.16.0.0 - 172.31.255.255 (172.16.0.0/12) &lt;strong&gt;&amp;lt;= default AWS one&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;192.168.0.0 - 192.168.255.255 (192.168.0.0/16) &amp;lt;= example: home networks&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;All the rest of the IP on the internet are public IP&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Hello There</summary></entry></feed>
