@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-02-11T05:01:41-08:00</updated><id>/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We arw currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;p&gt;Hello There&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-12T10:08:30-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;p&gt;Hello There&lt;/p&gt;
 
 &lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
 &lt;hr /&gt;
@@ -100,4 +100,19 @@
       &lt;li&gt;All the rest of the IP on the internet are public IP&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;default-vpc-overview&quot;&gt;Default VPC Overview&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;All new accounts have a default VPC&lt;/li&gt;
+  &lt;li&gt;New instances are launched into default VPC if no subnet is specified&lt;/li&gt;
+  &lt;li&gt;Default VPC have internet connectivity nad all instances have public IP&lt;/li&gt;
+  &lt;li&gt;We also get a public and a private DNS name&lt;/li&gt;
+  &lt;li&gt;The deafult VPC CIDR is 172.31.0.0/16. Default subnets use /20 CIDRs within the default VPC CIDR.&lt;/li&gt;
+  &lt;li&gt;Each subnet has a non-overlapping CIDR.&lt;/li&gt;
+  &lt;li&gt;We have one route table&lt;/li&gt;
+  &lt;li&gt;In Network ACL, we allow all traffic (both inbound and outbound)&lt;/li&gt;
+  &lt;li&gt;Route table have non-explicit associations with subnets and hence associated with main route table.
+mn&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Hello There</summary></entry></feed>

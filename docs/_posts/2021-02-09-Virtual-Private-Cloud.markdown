@@ -69,3 +69,16 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
         - 172.16.0.0 - 172.31.255.255 (172.16.0.0/12) **<= default AWS one**
         - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16) <= example: home networks
     - All the rest of the IP on the internet are public IP
+
+### Default VPC Overview
+
+- All new accounts have a default VPC
+- New instances are launched into default VPC if no subnet is specified
+- Default VPC have internet connectivity nad all instances have public IP
+- We also get a public and a private DNS name
+- The deafult VPC CIDR is 172.31.0.0/16. Default subnets use /20 CIDRs within the default VPC CIDR.
+- Each subnet has a non-overlapping CIDR.
+- We have one route table
+- In Network ACL, we allow all traffic (both inbound and outbound)
+- Route table have non-explicit associations with subnets and hence associated with main route table.
+mn
