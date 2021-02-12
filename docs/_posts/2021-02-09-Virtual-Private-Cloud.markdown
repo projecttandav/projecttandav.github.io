@@ -81,4 +81,3 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
 - We have one route table
 - In Network ACL, we allow all traffic (both inbound and outbound)
 - Route table have non-explicit associations with subnets and hence associated with main route table.
-mn
