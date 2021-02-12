@@ -81,3 +81,27 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
 - We have one route table
 - In Network ACL, we allow all traffic (both inbound and outbound)
 - Route table have non-explicit associations with subnets and hence associated with main route table.
+- Routes defined in route tables define how subnet get access to internet. One of the targets is internet gateway.
+
+### VPC Overview
+
+- VPC in AWS - IPv4
+    - VPC Stands for Virtual Private Cloud
+    - You can have multiple VPCs in a region (max 5 per region - soft limit)
+    - Max CIDR per VPC is 5. Foe each CIDR
+        - Min size is /28 = 16 IP addresses.
+        - Max size is /16 = 65536 IP Addresses
+    - Because VPC is private, only the Private IP ranges are allowed.
+        - 10.0.0.0 - 10.255.255.255 (10.0.0.0/8)
+        - 172.16.0.0 - 172.31.255.255 (172.16.0.0/12)
+        - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16)
+    - *Your VPC CIDR should not overlap with your other networks (ex:corporate)*
+
+- Hands On VPC Creation
+    - Click on **Create VPC** button on Your VPCs dashboard
+    - Add Name tag, choose IPv4 CIDR block. (don't choose ant IPv6 CIDR block)
+    - Choose Tenacy (how we are going to launch our VPC - deafult (shared hardware) or dedicated hardware)
+    - Clicking on Create will create the VPC.
+    - Once created, we should be able to open it and find the CIDR blocks.
+    - New VPC will come with Main Route Table and Main Network ACL.
+    - **Note:** We can edit CIDRs (add upto 5) upon creation too.

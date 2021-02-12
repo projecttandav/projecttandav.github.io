@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-12T10:23:22-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;p&gt;Hello There&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-12T11:53:22-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;p&gt;Hello There&lt;/p&gt;
 
 &lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
 &lt;hr /&gt;
@@ -114,4 +114,41 @@
   &lt;li&gt;We have one route table&lt;/li&gt;
   &lt;li&gt;In Network ACL, we allow all traffic (both inbound and outbound)&lt;/li&gt;
   &lt;li&gt;Route table have non-explicit associations with subnets and hence associated with main route table.&lt;/li&gt;
+  &lt;li&gt;Routes defined in route tables define how subnet get access to internet. One of the targets is internet gateway.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vpc-overview&quot;&gt;VPC Overview&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VPC in AWS - IPv4
+    &lt;ul&gt;
+      &lt;li&gt;VPC Stands for Virtual Private Cloud&lt;/li&gt;
+      &lt;li&gt;You can have multiple VPCs in a region (max 5 per region - soft limit)&lt;/li&gt;
+      &lt;li&gt;Max CIDR per VPC is 5. Foe each CIDR
+        &lt;ul&gt;
+          &lt;li&gt;Min size is /28 = 16 IP addresses.&lt;/li&gt;
+          &lt;li&gt;Max size is /16 = 65536 IP Addresses&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Because VPC is private, only the Private IP ranges are allowed.
+        &lt;ul&gt;
+          &lt;li&gt;10.0.0.0 - 10.255.255.255 (10.0.0.0/8)&lt;/li&gt;
+          &lt;li&gt;172.16.0.0 - 172.31.255.255 (172.16.0.0/12)&lt;/li&gt;
+          &lt;li&gt;192.168.0.0 - 192.168.255.255 (192.168.0.0/16)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;Your VPC CIDR should not overlap with your other networks (ex:corporate)&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Hands On VPC Creation
+    &lt;ul&gt;
+      &lt;li&gt;Click on &lt;strong&gt;Create VPC&lt;/strong&gt; button on Your VPCs dashboard&lt;/li&gt;
+      &lt;li&gt;Add Name tag, choose IPv4 CIDR block. (don’t choose ant IPv6 CIDR block)&lt;/li&gt;
+      &lt;li&gt;Choose Tenacy (how we are going to launch our VPC - deafult (shared hardware) or dedicated hardware)&lt;/li&gt;
+      &lt;li&gt;Clicking on Create will create the VPC.&lt;/li&gt;
+      &lt;li&gt;Once created, we should be able to open it and find the CIDR blocks.&lt;/li&gt;
+      &lt;li&gt;New VPC will come with Main Route Table and Main Network ACL.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Note:&lt;/strong&gt; We can edit CIDRs (add upto 5) upon creation too.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Hello There</summary></entry></feed>
