@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-12T11:53:22-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;p&gt;Hello There&lt;/p&gt;
-
-&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-16T08:34:51-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
 &lt;hr /&gt;
 
 &lt;h3 id=&quot;section-introduction&quot;&gt;Section Introduction&lt;/h3&gt;
@@ -151,4 +149,56 @@
       &lt;li&gt;&lt;strong&gt;Note:&lt;/strong&gt; We can edit CIDRs (add upto 5) upon creation too.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Hello There</summary></entry></feed>
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;subnets&quot;&gt;Subnets&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Subnets Overview
+    &lt;ul&gt;
+      &lt;li&gt;Subnets are tied to a specific availability zone&lt;/li&gt;
+      &lt;li&gt;Subnets are of two types viz., public and private.&lt;/li&gt;
+      &lt;li&gt;Adding multiple subnets in various availability zones will have high availability.&lt;/li&gt;
+      &lt;li&gt;Usually private subnets are smaller as we only put load balancers in there, while in private subnets we put our whole application.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;To create a Subnet
+    &lt;ul&gt;
+      &lt;li&gt;Click &lt;strong&gt;Create Subnet&lt;/strong&gt; button on Subnet home page&lt;/li&gt;
+      &lt;li&gt;Give it a name like &lt;strong&gt;PublicSubnetA&lt;/strong&gt; as it will be in public subnet&lt;/li&gt;
+      &lt;li&gt;Select the VPC Created above, choose AZ A, and 10.0.0.0/24 as CIDR and click create.&lt;/li&gt;
+      &lt;li&gt;Similary for second Sybnet, use name &lt;strong&gt;PublicSubnetB&lt;/strong&gt;, AZ B and CIDR block as 10.0.1.0/24 and click create.&lt;/li&gt;
+      &lt;li&gt;Similary Create two private Subents with name &lt;strong&gt;PrivateSubnetA&lt;/strong&gt; and &lt;strong&gt;PrivateSubnetB&lt;/strong&gt; in AZ A and B respectively with CIDR blocks as 10.0.16.0/20 and 10.0.32.0/20 respectively&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Available number of IPs is always 5 less.
+    &lt;ul&gt;
+      &lt;li&gt;AWS reserves, 5 IP addresses (first 4 and last 1 IP Address) in each subnet&lt;/li&gt;
+      &lt;li&gt;These 5 IPs are not available for use ans cannot eb assigned to an instance.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Ex, if CIDR block is 10.0.0.0/24, reserved IP are:
+    &lt;ul&gt;
+      &lt;li&gt;10.0.0.0: Network Address&lt;/li&gt;
+      &lt;li&gt;10.0.0.1: Reserved by AWS for VPC router&lt;/li&gt;
+      &lt;li&gt;10.0.0.2: Reserved by AWS for mapping Amazon Provided DNS&lt;/li&gt;
+      &lt;li&gt;10.0.0.3: Reserved by AWS for future AWS&lt;/li&gt;
+      &lt;li&gt;10.0.0.255: Network broadcast address. AWS does not support broadcast in a VPC, therefore the address is reserved.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;internet-gateways--route-tables&quot;&gt;Internet Gateways &amp;amp; Route Tables&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Hands on
+    &lt;ul&gt;
+      &lt;li&gt;On Public Subnets do a right click and select Modify auto-assign setting and enable auto-assign public IPv4 addresses.&lt;/li&gt;
+      &lt;li&gt;Spin up a Amazon Linux AMI 2 EC2 t2.micro Instance.&lt;/li&gt;
+      &lt;li&gt;Use our newly created VPC as VPC&lt;/li&gt;
+      &lt;li&gt;Choose PublicSubnetA as subnet&lt;/li&gt;
+      &lt;li&gt;Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch&lt;/li&gt;
+      &lt;li&gt;Newly created EC2 instance will have&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Networking - VPC</summary></entry></feed>

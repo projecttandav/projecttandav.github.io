@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Virtual Private Cloud" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Hello There" />
-<meta property="og:description" content="Hello There" />
+<meta name="description" content="Networking - VPC" />
+<meta property="og:description" content="Networking - VPC" />
 <link rel="canonical" href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" />
 <meta property="og:url" content="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" />
 <meta property="og:site_name" content="Kaushal Kumar" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Virtual Private Cloud" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html"},"url":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html","@type":"BlogPosting","description":"Hello There","headline":"Virtual Private Cloud","dateModified":"2021-02-09T20:27:53-08:00","datePublished":"2021-02-09T20:27:53-08:00","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html"},"url":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html","@type":"BlogPosting","description":"Networking - VPC","headline":"Virtual Private Cloud","dateModified":"2021-02-09T20:27:53-08:00","datePublished":"2021-02-09T20:27:53-08:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Kaushal Kumar" /></head>
 <body><header class="site-header" role="banner">
@@ -47,9 +47,7 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>Hello There</p>
-
-<h2 id="networking---vpc">Networking - VPC</h2>
+    <h2 id="networking---vpc">Networking - VPC</h2>
 <hr />
 
 <h3 id="section-introduction">Section Introduction</h3>
@@ -198,6 +196,58 @@
       <li>Once created, we should be able to open it and find the CIDR blocks.</li>
       <li>New VPC will come with Main Route Table and Main Network ACL.</li>
       <li><strong>Note:</strong> We can edit CIDRs (add upto 5) upon creation too.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="subnets">Subnets</h3>
+
+<ul>
+  <li>Subnets Overview
+    <ul>
+      <li>Subnets are tied to a specific availability zone</li>
+      <li>Subnets are of two types viz., public and private.</li>
+      <li>Adding multiple subnets in various availability zones will have high availability.</li>
+      <li>Usually private subnets are smaller as we only put load balancers in there, while in private subnets we put our whole application.</li>
+    </ul>
+  </li>
+  <li>To create a Subnet
+    <ul>
+      <li>Click <strong>Create Subnet</strong> button on Subnet home page</li>
+      <li>Give it a name like <strong>PublicSubnetA</strong> as it will be in public subnet</li>
+      <li>Select the VPC Created above, choose AZ A, and 10.0.0.0/24 as CIDR and click create.</li>
+      <li>Similary for second Sybnet, use name <strong>PublicSubnetB</strong>, AZ B and CIDR block as 10.0.1.0/24 and click create.</li>
+      <li>Similary Create two private Subents with name <strong>PrivateSubnetA</strong> and <strong>PrivateSubnetB</strong> in AZ A and B respectively with CIDR blocks as 10.0.16.0/20 and 10.0.32.0/20 respectively</li>
+    </ul>
+  </li>
+  <li>Available number of IPs is always 5 less.
+    <ul>
+      <li>AWS reserves, 5 IP addresses (first 4 and last 1 IP Address) in each subnet</li>
+      <li>These 5 IPs are not available for use ans cannot eb assigned to an instance.</li>
+    </ul>
+  </li>
+  <li>Ex, if CIDR block is 10.0.0.0/24, reserved IP are:
+    <ul>
+      <li>10.0.0.0: Network Address</li>
+      <li>10.0.0.1: Reserved by AWS for VPC router</li>
+      <li>10.0.0.2: Reserved by AWS for mapping Amazon Provided DNS</li>
+      <li>10.0.0.3: Reserved by AWS for future AWS</li>
+      <li>10.0.0.255: Network broadcast address. AWS does not support broadcast in a VPC, therefore the address is reserved.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="internet-gateways--route-tables">Internet Gateways &amp; Route Tables</h3>
+
+<ul>
+  <li>Hands on
+    <ul>
+      <li>On Public Subnets do a right click and select Modify auto-assign setting and enable auto-assign public IPv4 addresses.</li>
+      <li>Spin up a Amazon Linux AMI 2 EC2 t2.micro Instance.</li>
+      <li>Use our newly created VPC as VPC</li>
+      <li>Choose PublicSubnetA as subnet</li>
+      <li>Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch</li>
+      <li>Newly created EC2 instance will have</li>
     </ul>
   </li>
 </ul>

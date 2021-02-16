@@ -5,8 +5,6 @@ date:   2021-02-09 20:27:53 -0800
 categories: jekyll update
 ---
 
-Hello There
-
 ## Networking - VPC
 ---
 
@@ -105,3 +103,37 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
     - Once created, we should be able to open it and find the CIDR blocks.
     - New VPC will come with Main Route Table and Main Network ACL.
     - **Note:** We can edit CIDRs (add upto 5) upon creation too.
+
+
+### Subnets
+
+- Subnets Overview
+    - Subnets are tied to a specific availability zone
+    - Subnets are of two types viz., public and private.
+    - Adding multiple subnets in various availability zones will have high availability.
+    - Usually private subnets are smaller as we only put load balancers in there, while in private subnets we put our whole application.
+- To create a Subnet
+    - Click **Create Subnet** button on Subnet home page
+    - Give it a name like **PublicSubnetA** as it will be in public subnet
+    - Select the VPC Created above, choose AZ A, and 10.0.0.0/24 as CIDR and click create.
+    - Similary for second Sybnet, use name **PublicSubnetB**, AZ B and CIDR block as 10.0.1.0/24 and click create.
+    - Similary Create two private Subents with name **PrivateSubnetA** and **PrivateSubnetB** in AZ A and B respectively with CIDR blocks as 10.0.16.0/20 and 10.0.32.0/20 respectively
+- Available number of IPs is always 5 less.
+    - AWS reserves, 5 IP addresses (first 4 and last 1 IP Address) in each subnet
+    - These 5 IPs are not available for use ans cannot eb assigned to an instance.
+- Ex, if CIDR block is 10.0.0.0/24, reserved IP are:
+    - 10.0.0.0: Network Address
+    - 10.0.0.1: Reserved by AWS for VPC router
+    - 10.0.0.2: Reserved by AWS for mapping Amazon Provided DNS
+    - 10.0.0.3: Reserved by AWS for future AWS
+    - 10.0.0.255: Network broadcast address. AWS does not support broadcast in a VPC, therefore the address is reserved.
+
+### Internet Gateways & Route Tables
+
+- Hands on
+    - On Public Subnets do a right click and select Modify auto-assign setting and enable auto-assign public IPv4 addresses.
+    - Spin up a Amazon Linux AMI 2 EC2 t2.micro Instance.
+    - Use our newly created VPC as VPC
+    - Choose PublicSubnetA as subnet
+    - Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch
+    - Newly created EC2 instance will have 
