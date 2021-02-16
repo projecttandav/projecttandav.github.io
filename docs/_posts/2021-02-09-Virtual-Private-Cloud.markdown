@@ -11,11 +11,11 @@ categories: jekyll update
 ### Table of Contents
 
 - [Section Introduction](#section-introduction)
-- [CIDR, Private vs Public IP](#cidr--private-vs-public-ip)
+- [CIDR - Private vs Public IP](#cidr---private-vs-public-ip)
 - [Default VPC Overview](#default-vpc-overview)
 - [VPC Overview](#vpc-overview)
 - [Subnets](#subnets)
-- [Internet Gateways & Route Tables](#internet-gateways---route-tables)
+- [Internet Gateways & Route Tables](#internet-gateways-and-route-tables)
 
 
 ### Section Introduction
@@ -24,7 +24,7 @@ We need to know in and out how to create, operate and manage the VPC for network
 
 We will focus on Amazon VPC and AWS Direcr Connect in this section.
 
-### CIDR, Private vs Public IP
+### CIDR - Private vs Public IP
 
 - CIDR - Classless Inter-Domain Routing <br/>
 - CIDR are sued for Security Groups rules, or AWS networking in general<br/>
@@ -138,7 +138,7 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
     - 10.0.0.3: Reserved by AWS for future AWS
     - 10.0.0.255: Network broadcast address. AWS does not support broadcast in a VPC, therefore the address is reserved.
 
-### Internet Gateways & Route Tables
+### Internet Gateways And Route Tables
 
 - Hands on
     - On Public Subnets do a right click and select Modify auto-assign setting and enable auto-assign public IPv4 addresses.
