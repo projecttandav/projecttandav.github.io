@@ -8,6 +8,16 @@ categories: jekyll update
 ## Networking - VPC
 ---
 
+### Table of Contents
+
+- [Section Introduction](#section-introduction)
+- [CIDR, Private vs Public IP](#cidr--private-vs-public-ip)
+- [Default VPC Overview](#default-vpc-overview)
+- [VPC Overview](#vpc-overview)
+- [Subnets](#subnets)
+- [Internet Gateways & Route Tables](#internet-gateways---route-tables)
+
+
 ### Section Introduction
 
 We need to know in and out how to create, operate and manage the VPC for network guidelines.
