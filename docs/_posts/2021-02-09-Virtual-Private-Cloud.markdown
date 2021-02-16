@@ -6,7 +6,6 @@ categories: jekyll update
 ---
 
 ## Networking - VPC
----
 
 ### Table of Contents
 
