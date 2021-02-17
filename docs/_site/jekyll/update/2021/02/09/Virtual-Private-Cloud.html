@@ -257,7 +257,21 @@
       <li>Use our newly created VPC as VPC</li>
       <li>Choose PublicSubnetA as subnet</li>
       <li>Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch</li>
-      <li>Newly created EC2 instance will have</li>
+      <li>Newly created EC2 instance will have a private IP which is within our subnet CIDR</li>
+      <li>We will also have our IPV4 Public IP as well.</li>
+      <li>If we try to access it with ssh via public IPv4, we won’t be able to, though our security groups allows TCP on Port 22.</li>
+      <li>This happens because it has no internet connection.</li>
+    </ul>
+  </li>
+  <li>Internet Gateways
+    <ul>
+      <li>Internet gateways helps our VPC instances connect with the internet</li>
+      <li>It scales horizontally and is highly available and redundant</li>
+      <li>Must be created separately from VPC</li>
+      <li>One VPC can only be attached to one IGW and vice versa.</li>
+      <li>Internet Gateway is also a NAT for the instance that have a public IPv4</li>
+      <li><em>Internet Gateways on their own do not allow internet access … .</em></li>
+      <li><em>Route tables must also be edited</em></li>
     </ul>
   </li>
 </ul>

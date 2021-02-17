@@ -146,4 +146,15 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
     - Use our newly created VPC as VPC
     - Choose PublicSubnetA as subnet
     - Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch
-    - Newly created EC2 instance will have 
+    - Newly created EC2 instance will have a private IP which is within our subnet CIDR
+    - We will also have our IPV4 Public IP as well.
+    - If we try to access it with ssh via public IPv4, we won't be able to, though our security groups allows TCP on Port 22.
+    - This happens because it has no internet connection.
+- Internet Gateways
+    - Internet gateways helps our VPC instances connect with the internet
+    - It scales horizontally and is highly available and redundant
+    - Must be created separately from VPC
+    - One VPC can only be attached to one IGW and vice versa.
+    - Internet Gateway is also a NAT for the instance that have a public IPv4
+    - _Internet Gateways on their own do not allow internet access ... ._
+    - _Route tables must also be edited_

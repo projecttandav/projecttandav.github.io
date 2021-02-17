@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-16T08:56:25-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-16T20:53:07-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
 
 &lt;h3 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h3&gt;
 
@@ -208,7 +208,21 @@
       &lt;li&gt;Use our newly created VPC as VPC&lt;/li&gt;
       &lt;li&gt;Choose PublicSubnetA as subnet&lt;/li&gt;
       &lt;li&gt;Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch&lt;/li&gt;
-      &lt;li&gt;Newly created EC2 instance will have&lt;/li&gt;
+      &lt;li&gt;Newly created EC2 instance will have a private IP which is within our subnet CIDR&lt;/li&gt;
+      &lt;li&gt;We will also have our IPV4 Public IP as well.&lt;/li&gt;
+      &lt;li&gt;If we try to access it with ssh via public IPv4, we won’t be able to, though our security groups allows TCP on Port 22.&lt;/li&gt;
+      &lt;li&gt;This happens because it has no internet connection.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Internet Gateways
+    &lt;ul&gt;
+      &lt;li&gt;Internet gateways helps our VPC instances connect with the internet&lt;/li&gt;
+      &lt;li&gt;It scales horizontally and is highly available and redundant&lt;/li&gt;
+      &lt;li&gt;Must be created separately from VPC&lt;/li&gt;
+      &lt;li&gt;One VPC can only be attached to one IGW and vice versa.&lt;/li&gt;
+      &lt;li&gt;Internet Gateway is also a NAT for the instance that have a public IPv4&lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;Internet Gateways on their own do not allow internet access … .&lt;/em&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;em&gt;Route tables must also be edited&lt;/em&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Networking - VPC</summary></entry></feed>
