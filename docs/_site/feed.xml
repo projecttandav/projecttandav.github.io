@@ -1,228 +1,152 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-16T20:53:07-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-18T00:44:56-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>A simple webiste to document AWS Cloud Learnings and its services. We are currently working on VPC (Virtual Private Cloud).</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">## Networking - VPC
 
-&lt;h3 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h3&gt;
+### Table of Contents
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-introduction&quot;&gt;Section Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#cidr---private-vs-public-ip&quot;&gt;CIDR - Private vs Public IP&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#default-vpc-overview&quot;&gt;Default VPC Overview&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#vpc-overview&quot;&gt;VPC Overview&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#subnets&quot;&gt;Subnets&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#internet-gateways-and-route-tables&quot;&gt;Internet Gateways &amp;amp; Route Tables&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+- [Section Introduction](#section-introduction)
+- [CIDR - Private vs Public IP](#cidr---private-vs-public-ip)
+- [Default VPC Overview](#default-vpc-overview)
+- [VPC Overview](#vpc-overview)
+- [Subnets](#subnets)
+- [Internet Gateways &amp; Route Tables](#internet-gateways-and-route-tables)
 
-&lt;h3 id=&quot;section-introduction&quot;&gt;Section Introduction&lt;/h3&gt;
 
-&lt;p&gt;We need to know in and out how to create, operate and manage the VPC for network guidelines.&lt;/p&gt;
+### Section Introduction
 
-&lt;p&gt;We will focus on Amazon VPC and AWS Direcr Connect in this section.&lt;/p&gt;
+We need to know in and out how to create, operate and manage the VPC for network guidelines.
 
-&lt;h3 id=&quot;cidr---private-vs-public-ip&quot;&gt;CIDR - Private vs Public IP&lt;/h3&gt;
+We will focus on Amazon VPC and AWS Direcr Connect in this section.
 
-&lt;ul&gt;
-  &lt;li&gt;CIDR - Classless Inter-Domain Routing &lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;CIDR are sued for Security Groups rules, or AWS networking in general&lt;br /&gt;&lt;/li&gt;
-  &lt;li&gt;They help to define an IP Range.
-    &lt;ul&gt;
-      &lt;li&gt;We’ve seen WW.XX.YY.ZZ/32 == One IP &lt;br /&gt;&lt;/li&gt;
-      &lt;li&gt;We’ve seen 0.0.0.0/0 == all IPs &lt;br /&gt;&lt;/li&gt;
-      &lt;li&gt;But we can define e.g., 192.168.0.0/26: 192.168.0.0 - 192.168.0.63 (64 IP)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+### CIDR - Private vs Public IP
 
-&lt;p&gt;&lt;strong&gt;Understanding CIDR&lt;/strong&gt;&lt;/p&gt;
+- CIDR - Classless Inter-Domain Routing &lt;br/&gt;
+- CIDR are sued for Security Groups rules, or AWS networking in general&lt;br/&gt;
+- They help to define an IP Range.
+    - We&apos;ve seen WW.XX.YY.ZZ/32 == One IP &lt;br/&gt;
+    - We&apos;ve seen 0.0.0.0/0 == all IPs &lt;br/&gt;
+    - But we can define e.g., 192.168.0.0/26: 192.168.0.0 - 192.168.0.63 (64 IP)
 
-&lt;ul&gt;
-  &lt;li&gt;A CIDR has two components
-    &lt;ul&gt;
-      &lt;li&gt;the base IP (XX.XX.XX.XX)&lt;/li&gt;
-      &lt;li&gt;The Subnet Mask (/26)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;The base IP represents an IP contained in the range&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The subnet mask defines how many bits can change in the IP&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;The subnet mask can two two forms
-    &lt;ul&gt;
-      &lt;li&gt;255.255.255.0 &amp;lt;- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;less common&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;/24 &amp;lt;- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;more common&lt;/code&gt;
-&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Subnet masks basically allow part of the underlying IP to get additional next values from the base IP.
-    &lt;ul&gt;
-      &lt;li&gt;/32 allows for 1 IP = 2^0&lt;/li&gt;
-      &lt;li&gt;/24 allows for 256 IPs = 2^8&lt;/li&gt;
-      &lt;li&gt;/16 allows for 65,536 IPs = 2^16&lt;/li&gt;
-      &lt;li&gt;/0 allows for all IPs = 2^32
-&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Quick memo
-    &lt;ul&gt;
-      &lt;li&gt;/32 - no IP number can change&lt;/li&gt;
-      &lt;li&gt;/24 - last IP number can change&lt;/li&gt;
-      &lt;li&gt;/16 - last IP two numbers can change&lt;/li&gt;
-      &lt;li&gt;/8 - last IP three numbers can chnage&lt;/li&gt;
-      &lt;li&gt;/0 - all IP numbers can change
-&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Little Exercise
-    &lt;ul&gt;
-      &lt;li&gt;192.168.0.0/24 = …?
-        &lt;ul&gt;
-          &lt;li&gt;192.168.0.0 - 192.168.0.255 (256 IPs)&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;192.168.0.0/16 = …?
-        &lt;ul&gt;
-          &lt;li&gt;192.168.0.0 - 192.168.0.255 (65,536 IPs)&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;194.56.78.123/32 = …?
-        &lt;ul&gt;
-          &lt;li&gt;Just 194.56.78.123&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;0.0.0.0/0 = …?
-        &lt;ul&gt;
-          &lt;li&gt;All IPs&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;When in doubt - use this webiste: &lt;a href=&quot;https://www.ipaddressguide.com/cidr&quot;&gt;https://www.ipaddressguide.com/cidr&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Private vs Public IP (IPv4) - Allowed ranges
-    &lt;ul&gt;
-      &lt;li&gt;The Internet Assigned Numbers Authority (IANA) established certain blocks of IPv4 addresses for the use of private (LAN) and public (Internet) addresses&lt;/li&gt;
-      &lt;li&gt;Private IP can only allow certain values
-        &lt;ul&gt;
-          &lt;li&gt;10.0.0.0 - 10.255.255.255 (10.0.0.0/8) &amp;lt;= in big networks&lt;/li&gt;
-          &lt;li&gt;172.16.0.0 - 172.31.255.255 (172.16.0.0/12) &lt;strong&gt;&amp;lt;= default AWS one&lt;/strong&gt;&lt;/li&gt;
-          &lt;li&gt;192.168.0.0 - 192.168.255.255 (192.168.0.0/16) &amp;lt;= example: home networks&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;All the rest of the IP on the internet are public IP&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+**Understanding CIDR**
 
-&lt;h3 id=&quot;default-vpc-overview&quot;&gt;Default VPC Overview&lt;/h3&gt;
+- A CIDR has two components
+    - the base IP (XX.XX.XX.XX)
+    - The Subnet Mask (/26)
+- The base IP represents an IP contained in the range
+- The subnet mask defines how many bits can change in the IP
 
-&lt;ul&gt;
-  &lt;li&gt;All new accounts have a default VPC&lt;/li&gt;
-  &lt;li&gt;New instances are launched into default VPC if no subnet is specified&lt;/li&gt;
-  &lt;li&gt;Default VPC have internet connectivity nad all instances have public IP&lt;/li&gt;
-  &lt;li&gt;We also get a public and a private DNS name&lt;/li&gt;
-  &lt;li&gt;The deafult VPC CIDR is 172.31.0.0/16. Default subnets use /20 CIDRs within the default VPC CIDR.&lt;/li&gt;
-  &lt;li&gt;Each subnet has a non-overlapping CIDR.&lt;/li&gt;
-  &lt;li&gt;We have one route table&lt;/li&gt;
-  &lt;li&gt;In Network ACL, we allow all traffic (both inbound and outbound)&lt;/li&gt;
-  &lt;li&gt;Route table have non-explicit associations with subnets and hence associated with main route table.&lt;/li&gt;
-  &lt;li&gt;Routes defined in route tables define how subnet get access to internet. One of the targets is internet gateway.&lt;/li&gt;
-&lt;/ul&gt;
+- The subnet mask can two two forms 
+    - 255.255.255.0 &lt;- `less common`
+    - /24 &lt;- `more common`
+&lt;br/&gt;&lt;br/&gt;
+- Subnet masks basically allow part of the underlying IP to get additional next values from the base IP.
+    - /32 allows for 1 IP = 2^0
+    - /24 allows for 256 IPs = 2^8
+    - /16 allows for 65,536 IPs = 2^16
+    - /0 allows for all IPs = 2^32
+&lt;br/&gt;&lt;br/&gt;
+- Quick memo
+    - /32 - no IP number can change
+    - /24 - last IP number can change
+    - /16 - last IP two numbers can change
+    - /8 - last IP three numbers can chnage 
+    - /0 - all IP numbers can change
+&lt;br/&gt;&lt;br/&gt;
+- Little Exercise
+    - 192.168.0.0/24 = ...?
+        - 192.168.0.0 - 192.168.0.255 (256 IPs)
+    - 192.168.0.0/16 = ...?
+        - 192.168.0.0 - 192.168.0.255 (65,536 IPs)
+    - 194.56.78.123/32 = ...?
+        -  Just 194.56.78.123
+    - 0.0.0.0/0 = ...?
+        - All IPs
 
-&lt;h3 id=&quot;vpc-overview&quot;&gt;VPC Overview&lt;/h3&gt;
+    - When in doubt - use this webiste: [https://www.ipaddressguide.com/cidr](https://www.ipaddressguide.com/cidr)
 
-&lt;ul&gt;
-  &lt;li&gt;VPC in AWS - IPv4
-    &lt;ul&gt;
-      &lt;li&gt;VPC Stands for Virtual Private Cloud&lt;/li&gt;
-      &lt;li&gt;You can have multiple VPCs in a region (max 5 per region - soft limit)&lt;/li&gt;
-      &lt;li&gt;Max CIDR per VPC is 5. Foe each CIDR
-        &lt;ul&gt;
-          &lt;li&gt;Min size is /28 = 16 IP addresses.&lt;/li&gt;
-          &lt;li&gt;Max size is /16 = 65536 IP Addresses&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Because VPC is private, only the Private IP ranges are allowed.
-        &lt;ul&gt;
-          &lt;li&gt;10.0.0.0 - 10.255.255.255 (10.0.0.0/8)&lt;/li&gt;
-          &lt;li&gt;172.16.0.0 - 172.31.255.255 (172.16.0.0/12)&lt;/li&gt;
-          &lt;li&gt;192.168.0.0 - 192.168.255.255 (192.168.0.0/16)&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Your VPC CIDR should not overlap with your other networks (ex:corporate)&lt;/em&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Hands On VPC Creation
-    &lt;ul&gt;
-      &lt;li&gt;Click on &lt;strong&gt;Create VPC&lt;/strong&gt; button on Your VPCs dashboard&lt;/li&gt;
-      &lt;li&gt;Add Name tag, choose IPv4 CIDR block. (don’t choose ant IPv6 CIDR block)&lt;/li&gt;
-      &lt;li&gt;Choose Tenacy (how we are going to launch our VPC - deafult (shared hardware) or dedicated hardware)&lt;/li&gt;
-      &lt;li&gt;Clicking on Create will create the VPC.&lt;/li&gt;
-      &lt;li&gt;Once created, we should be able to open it and find the CIDR blocks.&lt;/li&gt;
-      &lt;li&gt;New VPC will come with Main Route Table and Main Network ACL.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Note:&lt;/strong&gt; We can edit CIDRs (add upto 5) upon creation too.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+- Private vs Public IP (IPv4) - Allowed ranges
+    - The Internet Assigned Numbers Authority (IANA) established certain blocks of IPv4 addresses for the use of private (LAN) and public (Internet) addresses
+    - Private IP can only allow certain values
+        - 10.0.0.0 - 10.255.255.255 (10.0.0.0/8) &lt;= in big networks
+        - 172.16.0.0 - 172.31.255.255 (172.16.0.0/12) **&lt;= default AWS one**
+        - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16) &lt;= example: home networks
+    - All the rest of the IP on the internet are public IP
 
-&lt;h3 id=&quot;subnets&quot;&gt;Subnets&lt;/h3&gt;
+### Default VPC Overview
 
-&lt;ul&gt;
-  &lt;li&gt;Subnets Overview
-    &lt;ul&gt;
-      &lt;li&gt;Subnets are tied to a specific availability zone&lt;/li&gt;
-      &lt;li&gt;Subnets are of two types viz., public and private.&lt;/li&gt;
-      &lt;li&gt;Adding multiple subnets in various availability zones will have high availability.&lt;/li&gt;
-      &lt;li&gt;Usually private subnets are smaller as we only put load balancers in there, while in private subnets we put our whole application.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;To create a Subnet
-    &lt;ul&gt;
-      &lt;li&gt;Click &lt;strong&gt;Create Subnet&lt;/strong&gt; button on Subnet home page&lt;/li&gt;
-      &lt;li&gt;Give it a name like &lt;strong&gt;PublicSubnetA&lt;/strong&gt; as it will be in public subnet&lt;/li&gt;
-      &lt;li&gt;Select the VPC Created above, choose AZ A, and 10.0.0.0/24 as CIDR and click create.&lt;/li&gt;
-      &lt;li&gt;Similary for second Sybnet, use name &lt;strong&gt;PublicSubnetB&lt;/strong&gt;, AZ B and CIDR block as 10.0.1.0/24 and click create.&lt;/li&gt;
-      &lt;li&gt;Similary Create two private Subents with name &lt;strong&gt;PrivateSubnetA&lt;/strong&gt; and &lt;strong&gt;PrivateSubnetB&lt;/strong&gt; in AZ A and B respectively with CIDR blocks as 10.0.16.0/20 and 10.0.32.0/20 respectively&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Available number of IPs is always 5 less.
-    &lt;ul&gt;
-      &lt;li&gt;AWS reserves, 5 IP addresses (first 4 and last 1 IP Address) in each subnet&lt;/li&gt;
-      &lt;li&gt;These 5 IPs are not available for use ans cannot eb assigned to an instance.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Ex, if CIDR block is 10.0.0.0/24, reserved IP are:
-    &lt;ul&gt;
-      &lt;li&gt;10.0.0.0: Network Address&lt;/li&gt;
-      &lt;li&gt;10.0.0.1: Reserved by AWS for VPC router&lt;/li&gt;
-      &lt;li&gt;10.0.0.2: Reserved by AWS for mapping Amazon Provided DNS&lt;/li&gt;
-      &lt;li&gt;10.0.0.3: Reserved by AWS for future AWS&lt;/li&gt;
-      &lt;li&gt;10.0.0.255: Network broadcast address. AWS does not support broadcast in a VPC, therefore the address is reserved.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+- All new accounts have a default VPC
+- New instances are launched into default VPC if no subnet is specified
+- Default VPC have internet connectivity nad all instances have public IP
+- We also get a public and a private DNS name
+- The deafult VPC CIDR is 172.31.0.0/16. Default subnets use /20 CIDRs within the default VPC CIDR.
+- Each subnet has a non-overlapping CIDR.
+- We have one route table
+- In Network ACL, we allow all traffic (both inbound and outbound)
+- Route table have non-explicit associations with subnets and hence associated with main route table.
+- Routes defined in route tables define how subnet get access to internet. One of the targets is internet gateway.
 
-&lt;h3 id=&quot;internet-gateways-and-route-tables&quot;&gt;Internet Gateways And Route Tables&lt;/h3&gt;
+### VPC Overview
 
-&lt;ul&gt;
-  &lt;li&gt;Hands on
-    &lt;ul&gt;
-      &lt;li&gt;On Public Subnets do a right click and select Modify auto-assign setting and enable auto-assign public IPv4 addresses.&lt;/li&gt;
-      &lt;li&gt;Spin up a Amazon Linux AMI 2 EC2 t2.micro Instance.&lt;/li&gt;
-      &lt;li&gt;Use our newly created VPC as VPC&lt;/li&gt;
-      &lt;li&gt;Choose PublicSubnetA as subnet&lt;/li&gt;
-      &lt;li&gt;Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch&lt;/li&gt;
-      &lt;li&gt;Newly created EC2 instance will have a private IP which is within our subnet CIDR&lt;/li&gt;
-      &lt;li&gt;We will also have our IPV4 Public IP as well.&lt;/li&gt;
-      &lt;li&gt;If we try to access it with ssh via public IPv4, we won’t be able to, though our security groups allows TCP on Port 22.&lt;/li&gt;
-      &lt;li&gt;This happens because it has no internet connection.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Internet Gateways
-    &lt;ul&gt;
-      &lt;li&gt;Internet gateways helps our VPC instances connect with the internet&lt;/li&gt;
-      &lt;li&gt;It scales horizontally and is highly available and redundant&lt;/li&gt;
-      &lt;li&gt;Must be created separately from VPC&lt;/li&gt;
-      &lt;li&gt;One VPC can only be attached to one IGW and vice versa.&lt;/li&gt;
-      &lt;li&gt;Internet Gateway is also a NAT for the instance that have a public IPv4&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Internet Gateways on their own do not allow internet access … .&lt;/em&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;em&gt;Route tables must also be edited&lt;/em&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Networking - VPC</summary></entry></feed>
+- VPC in AWS - IPv4
+    - VPC Stands for Virtual Private Cloud
+    - You can have multiple VPCs in a region (max 5 per region - soft limit)
+    - Max CIDR per VPC is 5. Foe each CIDR
+        - Min size is /28 = 16 IP addresses.
+        - Max size is /16 = 65536 IP Addresses
+    - Because VPC is private, only the Private IP ranges are allowed.
+        - 10.0.0.0 - 10.255.255.255 (10.0.0.0/8)
+        - 172.16.0.0 - 172.31.255.255 (172.16.0.0/12)
+        - 192.168.0.0 - 192.168.255.255 (192.168.0.0/16)
+    - *Your VPC CIDR should not overlap with your other networks (ex:corporate)*
+
+- Hands On VPC Creation
+    - Click on **Create VPC** button on Your VPCs dashboard
+    - Add Name tag, choose IPv4 CIDR block. (don&apos;t choose ant IPv6 CIDR block)
+    - Choose Tenacy (how we are going to launch our VPC - deafult (shared hardware) or dedicated hardware)
+    - Clicking on Create will create the VPC.
+    - Once created, we should be able to open it and find the CIDR blocks.
+    - New VPC will come with Main Route Table and Main Network ACL.
+    - **Note:** We can edit CIDRs (add upto 5) upon creation too.
+
+
+### Subnets
+
+- Subnets Overview
+    - Subnets are tied to a specific availability zone
+    - Subnets are of two types viz., public and private.
+    - Adding multiple subnets in various availability zones will have high availability.
+    - Usually private subnets are smaller as we only put load balancers in there, while in private subnets we put our whole application.
+- To create a Subnet
+    - Click **Create Subnet** button on Subnet home page
+    - Give it a name like **PublicSubnetA** as it will be in public subnet
+    - Select the VPC Created above, choose AZ A, and 10.0.0.0/24 as CIDR and click create.
+    - Similary for second Sybnet, use name **PublicSubnetB**, AZ B and CIDR block as 10.0.1.0/24 and click create.
+    - Similary Create two private Subents with name **PrivateSubnetA** and **PrivateSubnetB** in AZ A and B respectively with CIDR blocks as 10.0.16.0/20 and 10.0.32.0/20 respectively
+- Available number of IPs is always 5 less.
+    - AWS reserves, 5 IP addresses (first 4 and last 1 IP Address) in each subnet
+    - These 5 IPs are not available for use ans cannot eb assigned to an instance.
+- Ex, if CIDR block is 10.0.0.0/24, reserved IP are:
+    - 10.0.0.0: Network Address
+    - 10.0.0.1: Reserved by AWS for VPC router
+    - 10.0.0.2: Reserved by AWS for mapping Amazon Provided DNS
+    - 10.0.0.3: Reserved by AWS for future AWS
+    - 10.0.0.255: Network broadcast address. AWS does not support broadcast in a VPC, therefore the address is reserved.
+
+### Internet Gateways And Route Tables
+
+- Hands on
+    - On Public Subnets do a right click and select Modify auto-assign setting and enable auto-assign public IPv4 addresses.
+    - Spin up a Amazon Linux AMI 2 EC2 t2.micro Instance.
+    - Use our newly created VPC as VPC
+    - Choose PublicSubnetA as subnet
+    - Add Storage, tags and security groups (port 22 from anywhere), choose key pair. review and launch
+    - Newly created EC2 instance will have a private IP which is within our subnet CIDR
+    - We will also have our IPV4 Public IP as well.
+    - If we try to access it with ssh via public IPv4, we won&apos;t be able to, though our security groups allows TCP on Port 22.
+    - This happens because it has no internet connection.
+- Internet Gateways
+    - Internet gateways helps our VPC instances connect with the internet
+    - It scales horizontally and is highly available and redundant
+    - Must be created separately from VPC
+    - One VPC can only be attached to one IGW and vice versa.
+    - Internet Gateway is also a NAT for the instance that have a public IPv4
+    - _Internet Gateways on their own do not allow internet access ... ._
+    - _Route tables must also be edited_</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Networking - VPC</summary></entry></feed>
