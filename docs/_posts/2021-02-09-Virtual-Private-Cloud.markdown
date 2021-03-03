@@ -158,3 +158,23 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
     - Internet Gateway is also a NAT for the instance that have a public IPv4
     - _Internet Gateways on their own do not allow internet access ... ._
     - _Route tables must also be edited_
+    
+- Adding Interneyt Gateways
+    - Go to VPC Dashboard
+    - Select Internet Gateways from Left Side
+    - Click *Create Internet Gateway* button
+    - Give it a name tag *DemoIGW*
+    - Click on Create
+    - An Internet Gateway will be created
+    - Go to Internet Gateways and one should be able to see newly created Internet Gateway.
+    - Right Click on the internet gateway and select *Attach to VPC*. 
+    - Select the VPC and click Attach (we can also see AWS CLI command to execute it through CLI)
+    - *VPCs can have only one Internet Gateway attached to them.*
+    - If we try to ssh the EC2 instance, we still won't be able to do so. To fix this, we need to chnage route tables.
+    - So we have EC2 instance in subnet and the route table attched to VPC should point to internet gateway for a specific IP Range.
+    - We will not use main route table, for anytime we create a subnet and don't assocaite it to a route table, then it will go to main route table.
+    - Lets create two route tables *PublicRouteTable* and *PrivateRouteTable*  under demo VPC.
+    - Lets associate Public Subnets to the Public Route Table.
+    - Lets associate Private Subnets to the Private Route Table.
+    - In route tables, we can see how routes work.
+    - For Private route table, we can see 

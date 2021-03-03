@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Virtual Private Cloud" />
 <script type="application/ld+json">
-{"headline":"Virtual Private Cloud","dateModified":"2021-02-09T20:27:53-08:00","datePublished":"2021-02-09T20:27:53-08:00","url":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html"},"description":"Networking - VPC","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html"},"url":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html","@type":"BlogPosting","description":"Networking - VPC","headline":"Virtual Private Cloud","dateModified":"2021-02-09T20:27:53-08:00","datePublished":"2021-02-09T20:27:53-08:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Kaushal Kumar" /></head>
 <body><header class="site-header" role="banner">
@@ -272,6 +272,28 @@
       <li>Internet Gateway is also a NAT for the instance that have a public IPv4</li>
       <li><em>Internet Gateways on their own do not allow internet access … .</em></li>
       <li><em>Route tables must also be edited</em></li>
+    </ul>
+  </li>
+  <li>Adding Interneyt Gateways
+    <ul>
+      <li>Go to VPC Dashboard</li>
+      <li>Select Internet Gateways from Left Side</li>
+      <li>Click <em>Create Internet Gateway</em> button</li>
+      <li>Give it a name tag <em>DemoIGW</em></li>
+      <li>Click on Create</li>
+      <li>An Internet Gateway will be created</li>
+      <li>Go to Internet Gateways and one should be able to see newly created Internet Gateway.</li>
+      <li>Right Click on the internet gateway and select <em>Attach to VPC</em>.</li>
+      <li>Select the VPC and click Attach (we can also see AWS CLI command to execute it through CLI)</li>
+      <li><em>VPCs can have only one Internet Gateway attached to them.</em></li>
+      <li>If we try to ssh the EC2 instance, we still won’t be able to do so. To fix this, we need to chnage route tables.</li>
+      <li>So we have EC2 instance in subnet and the route table attched to VPC should point to internet gateway for a specific IP Range.</li>
+      <li>We will not use main route table, for anytime we create a subnet and don’t assocaite it to a route table, then it will go to main route table.</li>
+      <li>Lets create two route tables <em>PublicRouteTable</em> and <em>PrivateRouteTable</em>  under demo VPC.</li>
+      <li>Lets associate Public Subnets to the Public Route Table.</li>
+      <li>Lets associate Private Subnets to the Private Route Table.</li>
+      <li>In route tables, we can see how routes work.</li>
+      <li>For Private route table, we can see</li>
     </ul>
   </li>
 </ul>
