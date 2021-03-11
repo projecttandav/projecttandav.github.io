@@ -18,6 +18,7 @@ categories: jekyll update
 - [Internet Gateways & Route Tables](#internet-gateways-and-route-tables)
 
 
+
 ### Section Introduction
 
 We need to know in and out how to create, operate and manage the VPC for network guidelines.
@@ -159,7 +160,7 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
     - _Internet Gateways on their own do not allow internet access ... ._
     - _Route tables must also be edited_
     
-- Adding Interneyt Gateways
+- Adding Internet Gateways
     - Go to VPC Dashboard
     - Select Internet Gateways from Left Side
     - Click *Create Internet Gateway* button
@@ -177,4 +178,9 @@ We will focus on Amazon VPC and AWS Direcr Connect in this section.
     - Lets associate Public Subnets to the Public Route Table.
     - Lets associate Private Subnets to the Private Route Table.
     - In route tables, we can see how routes work.
-    - For Private route table, we can see 
+    - For Private route table, we can see destination as 10.0.00/16 and target as local, which is actually apt for it, as we don't want anything accessible from outside.
+    - But for public subnet, we need it to be accessible from outside. So we need to add a routes in routes table
+    We will add 0.0.0.0/0 as Destination and will choose internet gateway as Target, and save it. So now if we hit anuthing in VPC CIDR, it will be local and otherwise, it will be internet gateways.
+    - Now if we give an attempt to access the EC2 instance in public subnet, it will work.
+    - We can even try running command *sudo yum update* to esnure that it is connectec to Internet
+

@@ -9,17 +9,17 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Networking - VPC" />
 <meta property="og:description" content="Networking - VPC" />
-<link rel="canonical" href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" />
-<meta property="og:url" content="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" />
+<link rel="canonical" href="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" />
+<meta property="og:url" content="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" />
 <meta property="og:site_name" content="Kaushal Kumar" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-09T20:27:53-08:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Virtual Private Cloud" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html"},"url":"http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html","@type":"BlogPosting","description":"Networking - VPC","headline":"Virtual Private Cloud","dateModified":"2021-02-09T20:27:53-08:00","datePublished":"2021-02-09T20:27:53-08:00","@context":"https://schema.org"}</script>
+{"headline":"Virtual Private Cloud","dateModified":"2021-02-09T20:27:53-08:00","datePublished":"2021-02-09T20:27:53-08:00","url":"/jekyll/update/2021/02/09/Virtual-Private-Cloud.html","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll/update/2021/02/09/Virtual-Private-Cloud.html"},"@type":"BlogPosting","description":"Networking - VPC","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Kaushal Kumar" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Kaushal Kumar" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Kaushal Kumar</a><nav class="site-nav">
@@ -274,7 +274,7 @@
       <li><em>Route tables must also be edited</em></li>
     </ul>
   </li>
-  <li>Adding Interneyt Gateways
+  <li>Adding Internet Gateways
     <ul>
       <li>Go to VPC Dashboard</li>
       <li>Select Internet Gateways from Left Side</li>
@@ -293,10 +293,15 @@
       <li>Lets associate Public Subnets to the Public Route Table.</li>
       <li>Lets associate Private Subnets to the Private Route Table.</li>
       <li>In route tables, we can see how routes work.</li>
-      <li>For Private route table, we can see</li>
+      <li>For Private route table, we can see destination as 10.0.00/16 and target as local, which is actually apt for it, as we don’t want anything accessible from outside.</li>
+      <li>But for public subnet, we need it to be accessible from outside. So we need to add a routes in routes table
+  We will add 0.0.0.0/0 as Destination and will choose internet gateway as Target, and save it. So now if we hit anuthing in VPC CIDR, it will be local and otherwise, it will be internet gateways.</li>
+      <li>Now if we give an attempt to access the EC2 instance in public subnet, it will work.</li>
+      <li>We can even try running command <em>sudo yum update</em> to esnure that it is connectec to Internet</li>
     </ul>
   </li>
 </ul>
+
 
   </div><a class="u-url" href="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" hidden></a>
 </article>

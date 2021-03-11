@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-01T07:16:25-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>Professor Pandit</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-11T01:04:42-08:00</updated><id>/feed.xml</id><title type="html">Kaushal Kumar</title><subtitle>Professor Pandit</subtitle><entry><title type="html">Virtual Private Cloud</title><link href="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html" rel="alternate" type="text/html" title="Virtual Private Cloud" /><published>2021-02-09T20:27:53-08:00</published><updated>2021-02-09T20:27:53-08:00</updated><id>/jekyll/update/2021/02/09/Virtual-Private-Cloud</id><content type="html" xml:base="/jekyll/update/2021/02/09/Virtual-Private-Cloud.html">&lt;h2 id=&quot;networking---vpc&quot;&gt;Networking - VPC&lt;/h2&gt;
 
 &lt;h3 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h3&gt;
 
@@ -225,7 +225,7 @@
       &lt;li&gt;&lt;em&gt;Route tables must also be edited&lt;/em&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Adding Interneyt Gateways
+  &lt;li&gt;Adding Internet Gateways
     &lt;ul&gt;
       &lt;li&gt;Go to VPC Dashboard&lt;/li&gt;
       &lt;li&gt;Select Internet Gateways from Left Side&lt;/li&gt;
@@ -244,7 +244,11 @@
       &lt;li&gt;Lets associate Public Subnets to the Public Route Table.&lt;/li&gt;
       &lt;li&gt;Lets associate Private Subnets to the Private Route Table.&lt;/li&gt;
       &lt;li&gt;In route tables, we can see how routes work.&lt;/li&gt;
-      &lt;li&gt;For Private route table, we can see&lt;/li&gt;
+      &lt;li&gt;For Private route table, we can see destination as 10.0.00/16 and target as local, which is actually apt for it, as we don’t want anything accessible from outside.&lt;/li&gt;
+      &lt;li&gt;But for public subnet, we need it to be accessible from outside. So we need to add a routes in routes table
+  We will add 0.0.0.0/0 as Destination and will choose internet gateway as Target, and save it. So now if we hit anuthing in VPC CIDR, it will be local and otherwise, it will be internet gateways.&lt;/li&gt;
+      &lt;li&gt;Now if we give an attempt to access the EC2 instance in public subnet, it will work.&lt;/li&gt;
+      &lt;li&gt;We can even try running command &lt;em&gt;sudo yum update&lt;/em&gt; to esnure that it is connectec to Internet&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">Networking - VPC</summary></entry></feed>
